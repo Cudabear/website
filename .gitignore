@@ -1,0 +1,9 @@
+###########
+#Ignore sass cashe
+.sass-cache/
+
+#########
+#Ignore compiled css
+#*.css
+
+blog/
