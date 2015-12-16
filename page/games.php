@@ -56,13 +56,23 @@
                 <a href="javascript:void 0;" onclick="Utils.loadPage('blog-id-193')"><img title="Postmortem" class="link-logo float-right" src="res/img/wp.png"></a>
             </div>
         </div>
+        <div id="ld34-block" class="game-link" name="ld34">
+            <div class="game-information">
+                <div><a href="/ld34">Flutter</a></div>
+                <div class="game-genre">Puzzle Platformer</div>
+                <div class="game-discription-extended">This game is the first time I opted to make a Jam game, instead of a Compo game.  This means I had help; my wife did almost all of the art and designed the game with me.  For being my second puzzle-platformer, I'm very proud of it.</div>
+                <a href="https://www.youtube.com/watch?v=V6qnIODz_k0" target="blank"><img title="Timelapse" class="link-logo float-right" src="res/img/youtube.png"></a>
+                <a href="http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=25773"><img title="Submission Page" class="link-logo float-right" src="res/img/ld.png"></a>
+                <!--<a href="javascript:void 0;" onclick="Utils.loadPage('blog-id-193')"><img title="Postmortem" class="link-logo float-right" src="res/img/wp.png"></a>-->
+            </div>
+        </div>
     </div>
 </div>
 
 <script type="text/javascript">
     $('.game-link').on('click', function(e){
         t = e;
-        if(e.target.className.indexOf('link-logo') == -1){
+        if(e.target.className.indexOf('link-logo') == -1 && !e.target.href){
             window.open('http://www.cudascubby.com/'+$(this).attr('name'));
         }
     });

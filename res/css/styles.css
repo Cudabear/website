@@ -328,6 +328,11 @@ a:visited {
     background-image: url(../img/ld33.png);
 }
 
+#ld34-block {
+    background-image: url(../img/flutter.png);
+    background-size: 160%;
+}
+
 #sod-block {
     background-image: url(../img/sod.jpg);
 }
