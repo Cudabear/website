@@ -12,7 +12,7 @@
         <div id="ld28-block" class="game-link" name="ld28">
             <div class="game-information">
                 <div><a href="/ld28">The Lonely One</a></div>
-                <div class="game-genre">Puzzle Platformer</div>
+                <div class="game-genre">Puzzle/Action Platformer</div>
                 <div class="game-discription-extended">This game was created for Ludum Dare 28, and the first game I ever made. It's pretty rough, but I learned a lot making it.</div>
                 <a href="http://ludumdare.com/compo/ludum-dare-28/?action=preview&uid=25773"><img title="Submission Page" class="link-logo float-right" src="res/img/ld.png"></a>
                 <a href="javascript:void 0;" onclick="Utils.loadPage('blog-id-129')"><img title="Postmortem" class="link-logo float-right" src="res/img/wp.png"></a>
@@ -49,7 +49,7 @@
         <div id="ld33-block" class="game-link" name="ld33">
             <div class="game-information">
                 <div><a href="/ld33">Patient Zer0</a></div>
-                <div class="game-genre">Survival Horror</div>
+                <div class="game-genre">Top-Down Survival Horror</div>
                 <div class="game-discription-extended">I'm extremely proud of this game, it was my first attempt at something open world and I think it turned out quite well.</div>
                 <a href="https://www.youtube.com/watch?v=009PqxHui6I" target="blank"><img title="Timelapse" class="link-logo float-right" src="res/img/youtube.png"></a>
                 <a href="http://ludumdare.com/compo/ludum-dare-33/?action=preview&uid=25773"><img title="Submission Page" class="link-logo float-right" src="res/img/ld.png"></a>
@@ -63,6 +63,16 @@
                 <div class="game-discription-extended">This game is the first time I opted to make a Jam game, instead of a Compo game.  This means I had help; my wife did almost all of the art and designed the game with me.  For being my second puzzle-platformer, I'm very proud of it.</div>
                 <a href="https://www.youtube.com/watch?v=V6qnIODz_k0" target="blank"><img title="Timelapse" class="link-logo float-right" src="res/img/youtube.png"></a>
                 <a href="http://ludumdare.com/compo/ludum-dare-34/?action=preview&uid=25773"><img title="Submission Page" class="link-logo float-right" src="res/img/ld.png"></a>
+                <a href="javascript:void 0;" onclick="Utils.loadPage('blog-id-240')"><img title="Postmortem" class="link-logo float-right" src="res/img/wp.png"></a>
+            </div>
+        </div>
+        <div id="ld35-block" class="game-link" name="ld35">
+            <div class="game-information">
+                <div><a href="/ld35">Transform! The Three Natures</a></div>
+                <div class="game-genre">Puzzle/Action Platformer</div>
+                <div class="game-discription-extended">This is the second game I submitted as a team to the Jam side of Ludum Dare.  My wife and I collaborated to make this game: she made the art, I wrote the code.  This game was also my first attempt to use more advanced physics and a soft-body physics object.</div>
+                <a href="https://www.youtube.com/watch?v=ROqOFAVCV2Q" target="blank"><img title="Timelapse" class="link-logo float-right" src="res/img/youtube.png"></a>
+                <a href="http://ludumdare.com/compo/ludum-dare-35/?action=preview&uid=25773"><img title="Submission Page" class="link-logo float-right" src="res/img/ld.png"></a>
                 <!--<a href="javascript:void 0;" onclick="Utils.loadPage('blog-id-193')"><img title="Postmortem" class="link-logo float-right" src="res/img/wp.png"></a>-->
             </div>
         </div>
@@ -84,6 +94,6 @@
 
     $('.game-link').on('mouseout', function(e){
         $(this).children('.game-information').stop(true);
-        $(this).children('.game-information').animate({height: 40}, 500);
+        $(this).children('.game-information').animate({height: 45}, 500);
     });
 </script>

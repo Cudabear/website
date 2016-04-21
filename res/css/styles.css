@@ -166,7 +166,7 @@ a:visited {
     position: absolute;
     float: left;
     bottom: 0;
-    height: 40px;
+    height: 45px;
     width: 100.5%;
     padding: 3px;
     padding-right: 8px;
@@ -225,7 +225,7 @@ a:visited {
 }
 
 .story-link .game-genre {
-    margin-bottom: 5px;
+    margin-bottom: 10px;
 }
 
 .story-link .link-logo {
@@ -330,6 +330,11 @@ a:visited {
 
 #ld34-block {
     background-image: url(../img/flutter.png);
+    background-size: 160%;
+}
+
+#ld35-block {
+    background-image: url(../img/ld35.png);
     background-size: 160%;
 }
 
