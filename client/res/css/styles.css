@@ -1,0 +1,608 @@
+/*general styles*/
+body {
+    margin: 0;
+    overflow-x: hidden;
+    background-image: url(../img/smudges.jpg);
+    color: #BBBBBB;
+    font-family: sans-serif;
+}
+
+a {
+    color: #FFFFFF;
+    text-decoration: none;
+    font-family: 'Arimo', sans-serif;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:visited {
+    color: #999999;
+}
+
+#header {
+    min-width: 320px;
+    max-height: 205px;
+    background-image: url(../img/grid.jpg);
+    text-align: center;
+    padding-top: 5px;
+    overflow: hidden;
+    width: 100%;
+    position:fixed;
+    float: left;
+}
+
+#content {
+    height: auto;
+    min-width: 320px;
+    background-image: url(../img/grid.jpg);
+    box-sizing: border-box;
+}
+
+#content-padding {
+    padding: 25px 0;
+    background-repeat: no-repeat;
+    background-position: 50% 50%;
+
+}
+
+#navigation {
+    position: fixed;
+    z-index:10;
+    float: left;
+    top: 160px;
+    width: 100%;
+    min-width: 320px;
+    border: 2px solid #111111;
+    border-left-width: 0;
+    border-right-width: 0;
+}
+
+.header-button {
+    border: 0;
+    height: 100%;
+    color: #EEEEEE;
+    opacity: 0.75;
+    text-shadow: -1px -1px 0 #111111, 1px -1px 0 #111111, -1px 1px 0 #111111, 1px 1px 0 #111111;
+    border-left: 2px solid #111111;
+    font-family: 'Arimo', sans-serif;
+    width: 33.333%;
+}
+
+.header-button:last-child {
+    border-right: 2px solid #111111;
+}
+
+.header-button:focus {
+    outline: none;
+}
+
+.metalic-gradient {
+  background-color: #e4f5fc;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FFE4F5FC', endColorstr='#FF626368');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #e4f5fc), color-stop(7%, #9fa0a3), color-stop(14%, #aaafb7), color-stop(20%, #b0b3bd), color-stop(26%, #e0e3e9), color-stop(32%, #e0e3e9), color-stop(39%, #d7dae0), color-stop(46%, #b4b6bf), color-stop(52%, #6c6e75), color-stop(59%, #6f727b), color-stop(67%, #91949e), color-stop(76%, #b9bdc7), color-stop(84%, #868b94), color-stop(92%, #6f727c), color-stop(100%, #626368));
+  background-image: -webkit-linear-gradient(top, #e4f5fc 0%, #9fa0a3 7%, #aaafb7 14%, #b0b3bd 20%, #e0e3e9 26%, #e0e3e9 32%, #d7dae0 39%, #b4b6bf 46%, #6c6e75 52%, #6f727b 59%, #91949e 67%, #b9bdc7 76%, #868b94 84%, #6f727c 92%, #626368 100%);
+  background-image: -moz-linear-gradient(top, #e4f5fc 0%, #9fa0a3 7%, #aaafb7 14%, #b0b3bd 20%, #e0e3e9 26%, #e0e3e9 32%, #d7dae0 39%, #b4b6bf 46%, #6c6e75 52%, #6f727b 59%, #91949e 67%, #b9bdc7 76%, #868b94 84%, #6f727c 92%, #626368 100%);
+  background-image: -o-linear-gradient(top, #e4f5fc 0%, #9fa0a3 7%, #aaafb7 14%, #b0b3bd 20%, #e0e3e9 26%, #e0e3e9 32%, #d7dae0 39%, #b4b6bf 46%, #6c6e75 52%, #6f727b 59%, #91949e 67%, #b9bdc7 76%, #868b94 84%, #6f727c 92%, #626368 100%);
+  background-image: linear-gradient(top, #e4f5fc 0%, #9fa0a3 7%, #aaafb7 14%, #b0b3bd 20%, #e0e3e9 26%, #e0e3e9 32%, #d7dae0 39%, #b4b6bf 46%, #6c6e75 52%, #6f727b 59%, #91949e 67%, #b9bdc7 76%, #868b94 84%, #6f727c 92%, #626368 100%);
+
+}
+
+.header-button.header-button-down {
+  background-color: #626368;
+  *zoom: 1;
+  filter: progid:DXImageTransform.Microsoft.gradient(gradientType=0, startColorstr='#FF626368', endColorstr='#FFE4F5FC');
+  background-image: -webkit-gradient(linear, 50% 0%, 50% 100%, color-stop(0%, #626368), color-stop(8%, #6f727c), color-stop(16%, #868b94), color-stop(24%, #b9bdc7), color-stop(33%, #91949e), color-stop(41%, #6f727b), color-stop(48%, #6c6e75), color-stop(54%, #b4b6bf), color-stop(61%, #d7dae0), color-stop(68%, #e0e3e9), color-stop(74%, #e0e3e9), color-stop(80%, #b0b3bd), color-stop(86%, #aaafb7), color-stop(93%, #9fa0a3), color-stop(100%, #e4f5fc));
+  background-image: -webkit-linear-gradient(top, #626368 0%, #6f727c 8%, #868b94 16%, #b9bdc7 24%, #91949e 33%, #6f727b 41%, #6c6e75 48%, #b4b6bf 54%, #d7dae0 61%, #e0e3e9 68%, #e0e3e9 74%, #b0b3bd 80%, #aaafb7 86%, #9fa0a3 93%, #e4f5fc 100%);
+  background-image: -moz-linear-gradient(top, #626368 0%, #6f727c 8%, #868b94 16%, #b9bdc7 24%, #91949e 33%, #6f727b 41%, #6c6e75 48%, #b4b6bf 54%, #d7dae0 61%, #e0e3e9 68%, #e0e3e9 74%, #b0b3bd 80%, #aaafb7 86%, #9fa0a3 93%, #e4f5fc 100%);
+  background-image: -o-linear-gradient(top, #626368 0%, #6f727c 8%, #868b94 16%, #b9bdc7 24%, #91949e 33%, #6f727b 41%, #6c6e75 48%, #b4b6bf 54%, #d7dae0 61%, #e0e3e9 68%, #e0e3e9 74%, #b0b3bd 80%, #aaafb7 86%, #9fa0a3 93%, #e4f5fc 100%);
+  background-image: linear-gradient(top, #626368 0%, #6f727c 8%, #868b94 16%, #b9bdc7 24%, #91949e 33%, #6f727b 41%, #6c6e75 48%, #b4b6bf 54%, #d7dae0 61%, #e0e3e9 68%, #e0e3e9 74%, #b0b3bd 80%, #aaafb7 86%, #9fa0a3 93%, #e4f5fc 100%);
+  opacity: 1;
+  box-shadow: none;
+}
+
+#header #header-logo {
+   max-width:100%;
+   padding-left: 5px;
+   max-height: 205px;
+   cursor: pointer;
+   -webkit-transition: opacity 0.25s;
+   opacity: 1;
+}
+
+#header #header-logo:hover {
+    opacity: 0.75;
+}
+
+.center {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.float-right{
+    float: right;
+}
+
+.float-left {
+    float: left;
+}
+
+#game-link-wrap {
+    text-align: center;
+}
+
+.game-link {
+    height: 250px;
+    display: inline-block;
+    position: relative;
+
+    border: 2px solid #111111;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
+    background-repeat: no-repeat;
+    background-size:140%;
+    background-position: 50%;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.game-link a {
+    font-size: 18px;
+    display: inline;
+}
+
+.game-link a:visited {
+    color: #FFFFFF;
+}
+
+.game-link .game-information {
+    position: absolute;
+    float: left;
+    bottom: 0;
+    height: 45px;
+    width: 100.5%;
+    padding: 3px;
+    padding-right: 8px;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow-y: hidden;
+    box-sizing: border-box;
+}
+
+.game-link .game-genre {
+    margin-bottom: 5px;
+}
+
+.game-link .link-logo {
+    height: 28px;
+    margin: 10px 5px 5px 5px;
+}
+
+#story-link-wrap {
+    text-align: center;
+}
+
+.story-link {
+    height: 374px;
+    display: inline-block;
+    position: relative;
+
+    border: 2px solid #111111;
+    border-radius: 10px;
+    margin: 0 10px 10px 0;
+    background-repeat: no-repeat;
+    background-size:115%;
+    background-position: 50% 80%;
+    cursor: pointer;
+    overflow: hidden;
+    font-size: 14px;
+}
+
+.story-link a {
+    font-size: 18px;
+    display: inline;
+}
+
+.story-link a:visited {
+    color: #FFFFFF;
+}
+
+.story-link .story-information {
+    position: absolute;
+    float: left;
+    bottom: 0;
+    height: 40px;
+    width: 98%;
+    padding: 3px;
+    background-color: rgba(0, 0, 0, 0.75);
+    overflow-y: hidden;
+}
+
+.story-link .game-genre {
+    margin-bottom: 10px;
+}
+
+.story-link .link-logo {
+    height: 28px;
+    margin: 10px 5px 5px 5px;
+}
+
+.title {
+    margin: 0;
+    margin-bottom: 15px;
+    background-color: #444444;
+    border: 2px dashed #111111;
+    border-radius: 10px;
+    background-image: url(../img/smudges.jpg);
+    font-family: 'Arimo', sans-serif;
+    color: #FFFFFF;
+}
+
+.title a {
+    color: #FFFFFF;
+}
+
+#site-welcome {
+    margin: 0;
+    margin-bottom: 15px;
+    background-color: rgba(40,40,40,0.5);
+    border: 2px dashed #111111;
+    border-radius: 10px;
+    font-family: 'Arimo', sans-serif;
+    color: #FFFFFF;
+}
+
+.blog-excerpt {
+    margin-bottom: 10px;
+}
+
+.box-outline {
+    background-color: #444444;
+    border: 2px dashed #111111;
+    border-radius: 10px;
+    background-image: url(../img/smudges.jpg);
+    padding: 10px;
+}
+
+#logo {
+    width: 256px;
+    margin: 0 10px 10px 0;
+}
+
+#logo img {
+    width: 256px;
+    height: auto;
+}
+
+.subtitle {
+    font-family: 'Arimo', sans-serif;
+    margin-top: 5px;
+    margin-bottom: 10px;
+    color: #FFFFFF;
+}
+
+.divider {
+    border: 1px dashed #111111;
+}
+
+#news-blog-block {
+
+}
+
+#introduction-block {
+    background-image: url(../img/banner.jpg);
+    padding: 10px;
+    min-height: 200px;
+    background-position: 55% 15%;
+    background-size: 100% auto;
+    background-repeat: no-repeat;
+    background-color: #111111;
+    margin-bottom: 30px;
+    border: 2px dashed #111111;
+    border-radius: 10px;
+}
+
+#ld28-block {
+    background-image: url(../img/ld28.jpg);
+}
+
+#ld29-block {
+    background-image: url(../img/ld29.jpg);
+}
+
+#ld30-block {
+    background-image: url(../img/ld30.png);
+}
+
+#ld32-block {
+    background-image: url(../img/ld32.png);
+}
+
+#ld33-block {
+    background-image: url(../img/ld33.png);
+}
+
+#ld34-block {
+    background-image: url(../img/flutter.png);
+    background-size: 160%;
+}
+
+#ld35-block {
+    background-image: url(../img/ld35.png);
+    background-size: 160%;
+}
+
+#sod-block {
+    background-image: url(../img/sod.jpg);
+}
+
+#pos-block {
+    background-image: url(../img/pos.jpg);
+}
+
+#ditz-block {
+
+}
+
+#hotz-block {
+
+}
+
+#ia-block {
+    background-image: url(../img/ia.jpg);
+}
+
+#footer {
+    float: bottom;
+    padding: 10px;
+    margin-bottom: 10px;
+    margin-top: 30px;
+    background-image: url(../img/grid.jpg);
+    border: 2px dashed #111111;
+    border-left: none;
+    border-right: none;
+    color: #999999;
+    font-size: 10;
+    min-width: 320px;
+}
+
+#footer #footer-disclaimer {
+    width: 60%;
+}
+
+#footer img {
+    margin-left: 5px;
+}
+
+#social-links {
+    max-width: 420px;
+    background-image: url(../img/smudges.jpg);
+    border: 2px dashed #111111;
+    border-radius: 10px;
+    overflow: auto;
+}
+
+#social-links .social-link {
+    margin: 10px;
+    float: left;
+}
+
+#social-links .social-link img {
+    max-width: 64px;
+}
+
+/* desktop-specific styles */
+@media screen and (min-width: 960px) {
+    #content {
+        width: 960px;
+        border: 2px dashed #111111;
+        padding: 0 30px;
+    }
+
+    #games-disclaimer {
+        display: none;
+    }
+
+    #content #left {
+        float:left;
+        left: 0;
+        width: 250px;
+        height: 100%;
+
+    }
+
+    #footer {
+        height: 30px;
+    }
+
+    #header {
+        
+    }
+
+    #navigation {
+        height: 50px;
+    }
+
+    #content {
+        padding-top: 330px;
+    }
+
+    #content #right {
+
+    }
+
+    #navigation-button-wrap{
+        width: 960px;
+    }
+
+    .header-button {
+        font-size: 26px;
+        min-width: 80px;
+    }
+
+    #header-center {
+        width: 80%;
+        position: relative;
+    }
+
+    #footer #footer-wrap {
+        width: 960px;
+    }
+
+    #footer img {
+        width: 24px;
+    }
+}
+
+/* mobile-specific styles */
+@media screen and (max-width: 959px){
+    body {
+        /*overflow: hidden;*/
+        background-image: url(../img/grid.jpg);
+    }
+
+    #content {
+        max-width: 1000px;
+        padding: 0 2.5%;
+    }
+
+    #navigation {
+        height: 40px;
+    }
+
+    #header {
+        
+    }
+
+    #content #left {
+        position: fixed;
+        float: left;
+        width: 200px;
+        left: -200px;
+        height: 100%;
+        overflow-y: scroll;
+
+    }
+
+    #content {
+        padding-top: 230px;
+    }
+
+    #content #right {
+        width: 100%;
+        padding-bottom: 55px;
+    }
+
+    #navigation-button-wrap{
+
+    }
+
+    .header-button {
+        font-size: 20px;
+        min-width: 60px;
+    }
+
+    #header-center {
+        width: 95%;
+        position: relative;
+    }
+
+    #footer {
+        overflow: auto;
+        box-sizing: border-box;
+    }
+
+    #footer img {
+        width: 32px;
+        margin-top: 8px;
+    }
+}
+/*game width fix for small screens */
+@media screen and (max-width: 649px){
+    .game-link {
+        width: 100%;
+    }
+
+    .story-link {
+        width: 280px;
+    }
+}
+
+@media screen and (min-width: 650px){
+    .game-link {
+        width: 280px;
+    }
+
+    .story-link {
+        width: 280px;
+    }
+}
+
+/**
+ Wordpress styles
+ **/
+
+.blog-content .aligncenter {
+    text-align: center;
+}
+
+.blog-content .wp-caption {
+    border: 2px dashed #111111;
+    border-radius: 10px;
+    background-image: url(../img/smudges.jpg); 
+    font-family: 'Arimo', sans-serif;
+    margin: 10px;
+    padding: 10px;
+}
+
+.blog-content .alignright {
+    float: right;
+}
+
+.blog-content .alignleft {
+    float: left;
+}
+
+.blog-content .aligncenter {
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+}
+
+.blog-content .wp-caption-text {
+    margin: 0px;
+}
+
+.blog-content h2 {
+    font-family: 'Arimo', sans-serif;
+    color: #FFFFFF;
+}
+
+.blog-content li {
+    margin: 5px 0;
+}
+
+.blog-content img {
+    max-width: 100%;
+    height: auto;
+}
+
+.blog-content ul {
+    padding-left: 20px;
+}
+
+@media screen and (max-width: 959px){
+    .blog-content .wp-caption {
+        max-width: 93%;   
+    }
+
+    .blog-content img {
+    }
+}
+
