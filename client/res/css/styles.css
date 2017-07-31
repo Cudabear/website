@@ -338,6 +338,16 @@ a:visited {
     background-size: 160%;
 }
 
+#ld38-block {
+    background-image: url(../img/ld38.png);
+}
+
+#ld39-block {
+    background-image: url(../img/ld39.png);
+    background-size: 110%;
+    background-position-y: 0px;
+}
+
 #sod-block {
     background-image: url(../img/sod.jpg);
 }
