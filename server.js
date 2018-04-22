@@ -47,8 +47,8 @@ app.get('/controller/getPosts', function(req, res){
 
 var port = process.env.SERVER_PORT;
 app.listen(port || 3000, function(){
-    app.use(express.static('client'));
-    app.use(express.static('client/projects'));
+    app.use(express.static(__dirname + '/client'));
+    app.use(express.static(__dirname + '/client/projects'));
 
     console.log('The server is alive on port ', port);
 });
