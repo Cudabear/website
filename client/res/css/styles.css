@@ -263,6 +263,10 @@ a:visited {
     margin-bottom: 10px;
 }
 
+.blog-excerpt .wp-caption {
+    display: none;
+}
+
 .box-outline {
     background-color: #444444;
     border: 2px dashed #111111;
