@@ -1,0 +1,54 @@
+Hi All,
+
+This is the first development blog I'll be posting for my newest game project, Thanatophobia.
+
+Thanatophobia is a story-driven 2D rpg with turn-based combat that encourages strategy and planning.  For this game, I'm drawing inspiration from games such as XCOM, Fire Emblem, and Paper Mario.  The game will be presented in a simple but clean art style, with a unique soundtrack and mock voice acting.
+
+This game is being built in HTML5 and Javascript, utilizing the capabilities of WebGL-accelerated canvas.  This means the game will easily be able to run on any computer that can run a modern browser, and in the future, will likely be ported to mobile using a library such as PhoneGap.
+
+The game is presented from a top-down perspective, reminiscent of early 90's RPGs.  The movement is locked to a grid system to make positioning more straight-forward for executing strategies.  Normally, the player won't be able to move the character as far as the green area shown below, as right now it's abnormally large for testing.
+
+<div id="attachment_168" style="width: 515" class="wp-caption aligncenter"><a href="/res/blog-img/2014/12/gif1.gif"><img class="size-full wp-image-168" src="/res/blog-img/2014/12/gif1.gif" alt="Movement, showing lighting on high ground and low ground." width="515" height="361" /></a><p> Movement, showing lighting on high ground and low ground.</p></div>
+
+You can see that at this stage the game completely reused art from my previous Ludum Dare games <a href="http://www.cudascubby.com/ld28" target="_blank">The Lonely One</a> and <a href="http://www.cudascubby.com/ld29" target="_blank">Clone Escape</a>, but that was mostly because at this point I was just looking for something proof-of-concept and wasting time on art only to fail at the programming wouldn't be very fun!  Obviously, the player character won't be a lamp forever.
+
+The gif does show the basic lighting system and elevation system.  The darker squares are considered "higher ground" than the lower squares.  Therefore, when the player character is on the lower ground, they can't see the higher ground or what's behind it.  When they're on the higher ground, they can see everything.  Therefore, much like in Starcraft II, characters on the high ground will be able to fire down on enemies on the low ground while being completely safe, until the enemies gain vision of the high ground.
+
+The movement is very solid, it uses simple A-star pathfinding to quickly find the most efficient path to its target, avoiding "solid" squares.  In the gif above, the character jumps between high and low ground with ease, but there will be unsalable cliffs separating these two elevations shown later.  The character is required to find a ramp or ladder to access the high ground.
+
+For the lighting I'm using a slightly customized version of <a href="http://greweb.me/illuminated.js" target="_blank">Illuminated.js</a>.  Mostly, I've customized so that the dark mask also respects opaque objects in addition to lights.  This way, I can use the dark mask to imply a "flashlight" or a "field of view" while bathing the rest of the level in unknown darkness.  There will also be ambient lights that will permanently reveal areas of the map.  Overall, the lighting is pretty costly but I plan to make it more efficient in later iterations.  I currently have a solid 60fps on my i7, but my chromebook suffers at about 40fps, and my smartphone about 25.
+
+When two characters are placed on the map, their light sources interact nicely by blending, giving vision priority to any characters on the high ground.
+
+<div id="attachment_169" style="width: 566" class="wp-caption aligncenter"><a href="/res/blog-img/2014/12/gif2.gif"><img class="size-full wp-image-169" src="/res/blog-img/2014/12/gif2.gif" alt="Multiple character light sources, showing what happens when one is on the high ground and the other isn't." width="566" height="397" /></a><p> Showing off lighting interaction and movable blocks, something that will be used for simple puzzles.</p></div>
+
+You'll  notice the character pushing around a block.  This will be used for simple puzzles, where the character needs to push blocks out of the way to access a crucial item, unblock a path, or even use the blocks for cover.  As you can see, they block vision.  I plan to incorporate many other of these physics bodies, including doors that can be opened and closed, pressure plates and buttons that activate doors and traps, and other (hopefully) cool elements to provide depth to the world.
+
+At this point I was feeling pretty satisfied with what I had accomplished so far, so I decided to actually put some time into making a reasonable tileset for the map.   It's very simple so far, but it looks way better than the old tileset I was reusing.  Plus, you can actually see the blocks now.
+
+<div id="attachment_166" style="width: 600" class="wp-caption aligncenter"><a href="/res/blog-img/2014/12/gif3.gif"><img class="wp-image-166" src="/res/blog-img/2014/12/gif3.gif" alt="gif3" width="600" height="524" /></a><p> Walking around the new tileset and attacking</p></div>
+
+As you can see, the solid cliffs now better define the high ground, making it clear to the player when they're safely concealed or still on the dangerous low ground.
+
+Finally, an enemy that can be attacked!  If the character is within their melee attack range of the enemy, they receive this option.  There will be several variations of melee attacks, including attacks with broader range, quick attacks that allow you to attack <em>and</em> move in the same turn, and powerful attacks that knock the enemy back.
+
+This brings us to our second form of attack: ranged weapons.  Thanatophobia will have a nice selection of guns at the player's disposal, from handguns to sniper rifles.  These guns will be limited in use by ammunition, which will be hard to come by, and also be balanced out by accuracy.  The player has to manually aim the shots, which will have a certain area of error.  This is so shots taken from across the map will be harder to hit!
+
+<div id="attachment_167" style="width: 600" class="wp-caption aligncenter"><a href="/res/blog-img/2014/12/gif4.gif"><img class="wp-image-167" src="/res/blog-img/2014/12/gif4.gif" alt="Shooting at the enemy, showing field of hit chance." width="600" height="398" /></a><p> Shooting at the enemy, showing field of hit chance.</p></div>
+
+The size of this error cone will greatly depend on the quality of weapon and the skill of the character using it.  From the gif, you can see the green line that represents the path of the bullet.  When it collides with the enemy, damage is inflicted.  Obviously, these bullets won't go forever, but until they hit an enemy or a wall.  More powerful weapons may have the ability to pierce multiple enemies or walls.
+
+That's about it for now.  I've been developing for just under a month now and I'm very happy with the progress.  I hope to make one of these blogs every month or so, or whenever I hit a big milestone.  For now, my next steps are:
+<ol>
+	<li>Improve shooting physics (collide with walls, collide with enemies, ect)</li>
+	<li>Add explosives</li>
+	<li>Begin working on character sprites</li>
+	<li>Begin working on overworld interface</li>
+</ol>
+Thanks for reading, and be sure to check back for more updates in the near future!
+
+Cudabear
+
+&nbsp;
+
+&nbsp;

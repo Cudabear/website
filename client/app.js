@@ -11,7 +11,7 @@ $(document).ready(function(){
         $('.header-button').removeClass("header-button-down");
         $(this).addClass("header-button-down");
 
-        Utils.loadPage($(this).html());
+        Utils.loadPage($(this).html().replace(' ', '_'));
     });
 
     $(window).on('hashchange', Utils.hashChange);
@@ -67,7 +67,7 @@ Utils.loadPage = function(page){
 }
 
 Utils.hashChange = function(event){
-    var page = window.location.hash.replace('#', '');
+    var page = window.location.hash.replace('#', '').replace('%20', '_');
     var pageToLoad = "page/"+page+".html";
 
     //putting this here makes sure we know which blog is loaded

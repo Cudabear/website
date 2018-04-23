@@ -1,0 +1,194 @@
+Hello, all!
+
+Ludum Dare 28 (Compo) has come to a close.  The theme was, "You only get one."  Quite interesting, yet very restrictive.
+
+This was my first Dare, and I think I managed to deliver something pretty unique.  You can check it out <a href="http://www.cudascubby.com/ld28" target="_blank">here</a>.
+
+If you're feeling generous, please give the game a rating <a href="http://www.ludumdare.com/compo/ludum-dare-28/?action=preview&amp;uid=25773" target="_blank">here</a>.  However, you need to create an account to do so.  Every rating helps out!
+
+&nbsp;
+<h4 style="text-align: center;">The Game</h4>
+&nbsp;
+
+<div id="" style="width: 315" class="wp-caption alignleft"><img class=" " alt="Gameplay Screenshot #1" src="http://www.ludumdare.com/compo/wp-content/compo2/thumb/1bf1084b1a1aa480c8dae4ca4a07293f.jpg" width="315" height="235" /><p> Keep the darkness from your key!</p></div>
+
+Thanks to an effective hour-long brainstorming session, and much input from my wife on what would be fun/effective, I came up with the idea of a story-driven puzzle platformer in which you have to carry a single key safely to the end of each level.
+
+The challenge of the game lies in avoiding the "darkness", an abstract name I know but better than the codename "gremlins" I was using in development.  These creatures can't harm you directly, but they will destroy your key if they touch it.  <b>You only have one </b><strong>key</strong>, so if it is destroyed you will have to start the level over.  You will have to use environment to your advantage, luring the darkness into bottomless pits as they will do anything to reach your key.
+
+You can use lanterns which are scattered around the levels to your advantage.  If the darkness comes into contact with the light, they will be repelled.  If you trap them against a wall (where they are entombed in light) they will be stunned and unable to destroy your key, even if they touch it.  Unfortunately, however, <strong>you only have one</strong> hand that can carry any item, so you have to drop your key somewhere safe to progress.
+
+The story progresses as you venture from level to level.  You aim to discover what this key unlocks, before the darkness ultimately destroys it.  Will you ever find what you are looking for?
+
+&nbsp;
+<h3 style="text-align: center;"></h3>
+<h3 style="text-align: center;">The Timeline</h3>
+<b>Friday, December 13th</b>
+
+<em>9:00 PM</em>
+
+Just left the theater after watching <em>The Hobbit: The</em> <em>Desolation of Smaug.  </em>My friends happily began discussing what the liked and didn't like about the movie, but I didn't have much to say.  I quickly checked which theme had been chosen on my phone, and began thinking of ideas.
+
+<em>10:00 PM</em>
+
+Arrive home from dropping friends off.  My wife and I began filling up a corkboard with ideas and prototype drawings.  I aimed to thresh out an idea before even starting, in hopes that I wouldn't suffer the dreaded effects of scope creep later on.
+
+<div id="attachment_131" style="width: 448" class="wp-caption aligncenter"><a href="/res/blog-img/2013/12/IMG_20131215_200842.jpg"><img class="wp-image-131 " alt="Development Board" src="/res/blog-img/2013/12/IMG_20131215_200842-1024x768.jpg" width="448" height="336" /></a><p> It's good to know what you want before you start working on something.</p></div>
+
+<em>11:00 PM</em>
+
+Finish brainstorming, begin working on character sprite.  I chose a "construction paper" feel, hoping that it would look okay with very weak animation.  I only animated a two-frame walk cycle to save time.
+
+<b>Saturday, December 14th</b>
+
+<em>12:00 AM</em>
+
+Finish character sprite.  It looks pretty good.  I figured at this point I'd be best to create other art assets when I need them.  Begin working on actual code.
+
+<div id="attachment_134" style="width: 64" class="wp-caption aligncenter"><a href="/res/blog-img/2013/12/guy.gif"><img class="size-full wp-image-134 " alt="Guy Animation" src="/res/blog-img/2013/12/guy.gif" width="64" height="128" /></a><p> First Iteration of the player Sprite</p></div>
+
+<em>5:00 AM</em>
+
+Go to bed.  I was starting to make very stupid errors that were taking a long time to fix.  I knew I was better coder with sleep, even if it meant less working time.
+
+At this point I had the character sprite displayed with animations, and the controls implemented.  I also had the tile-loading system working, with basic tiles designed.  Physics worked well, thanks to Phaser.
+
+<em>10:30 AM</em>
+
+Wake up.  Begin working on coding in the "key" and the ability to pick it up and carry it around.  Also added the "lantern", with hard-coded support for exactly one lantern.
+
+Added and "animated" (because it's not really animation, just bobbing really) the enemies.  Gave them rudimentary pathfinding.  At this point, the enemies walked in a straight line until they hit a solid wall, then turned around.  They would fall off cliffs to their own doom easily.  They didn't collide with the player or his key/lantern yet.
+
+<div id="attachment_135" style="width: 64" class="wp-caption aligncenter"><a href="/res/blog-img/2013/12/gremlin.png"><img class="size-full wp-image-135" alt="enemy sprite" src="/res/blog-img/2013/12/gremlin.png" width="64" height="64" /></a><p> Generic enemies, yay!</p></div>
+
+<em></em><em>2:00 PM</em>
+
+Took a break to get a late lunch and get some errands done.  It gave me a chance to think about the enemy path finding outside of a code environment and spend some time with my wife.
+
+<em>6:00 PM</em>
+
+Arrive home, get back to work.  Began coding the enemy pathfinding.  This took a long time to get correct, mostly hindered by my inexperience with Phaser's physics handling and tile system.  Eventually get it so they will only fall off of cliffs if they know they won't become stuck, and they will try to jump up walls (sometimes) if they encounter them.
+
+<b>Sunday, December 15th</b>
+
+<em></em><em>12:00 AM</em>
+
+<em></em>Realize how much time I'm spending on pathfinding and decide to leave it as-is.  Move on to collision between enemy/key and enemy/lantern so the game is actually playable.
+
+Collision with key causes loose condition.  Implemented the ability to reset the level at this point, to make testing easier and also to prevent the player from becoming stuck during actual playtime.  A bug with sprites falling in the background inspired me to fling existing entities everywhere on restart.
+
+Collision with key causes enemy to fling backwards.  This took a solid three hours or so, again because of inexperience with Phaser's physics.  I had problems with enemies clipping through walls for a long while.
+
+Added the victory condition: entering the doorway while holding your key.
+
+<em>5:30 AM</em>
+
+Go to bed.  The game was playable at this point, but the only level was a very messy test level.
+
+<div id="" style="width: 576" class="wp-caption aligncenter"><img class=" " alt="Playable Game PIcture" src="http://www.ludumdare.com/compo/wp-content/uploads/2013/12/game2.png" width="576" height="431" /><p> At this point I should have stopped and focused on designing levels.</p></div>
+
+<em></em><em>2:00 PM</em>
+
+Arrive home from church and visiting family for a few hours after learning that the family dog was sick (don't worry, he'll be fine!)  Realize I only have 6 hours left to implement level loading/switching, and make some actual levels.  I haven't even incorporated any story at this point, either.
+
+First step was to add support for more than one lantern, which went surprisingly smoothly, but I never got a chance to use it to its full effect in level design.
+
+<i>4:00 PM</i>
+
+Level loading/switching works, thanks to some miracle insight and some stellar documentation by Phaser on their tilemap loading system.  I also created a gentle parsing system so that I can specify spawn locations of enemies/player/elements in an external tile editing program.
+
+<em>5:00 PM</em>
+
+Get text rendering to work for gameover messages.  Decide to recycle this system for all game messages.  Scrapped the "story" at this point and decided to instead give subtle hints and messages through onscreen text.
+
+Began working on designing actual levels, something I thought was going to be easy but wound up being much harder than expected.
+
+<em>6:00 PM</em>
+
+First level is complete, give it a playthrough to make sure everything works okay.  Found a few bugs with enemy pathfinding, tried to rectify them in as little time as possible.
+
+<em>7:00 PM</em>
+
+Three levels are complete, still no true ending or beginning.  At this point, the character just spawns into the first level and ending the last level throws an error that crashes the game.
+
+<div id="attachment_136" style="width: 578" class="wp-caption aligncenter"><a href="/res/blog-img/2013/12/game2.png"><img class=" wp-image-136 " alt="Level 2 screenshot" src="/res/blog-img/2013/12/game2.png" width="578" height="433" /></a><p> At first I made pretty cool looking levels, then it kind of fell apart.</p></div>
+
+Created the splash screen in a panic, wound up being a separate Phaser canvas all together laid over the top of the game while it loads in the background.  Horrible practice, but looks good.  It just flops into the actual game when it goes away; ugly but it will have to do.
+
+Created the ending, which wound up being just a level with some hastily-drawn sprites and some cheesy "feel good" writing.  Added a door that takes the player back to the first level to prevent the game from crashing.
+
+<em>7:45 </em><em>PM</em>
+
+Ironing out last minute bugs; basically panicking at this point.  Used random music generating software to generate a music track and implemented it as fast as I could.  Wound up being a pretty decent song, thankfully.
+
+<em>7:57 </em><em>PM</em>
+
+Finally call the game done.  Pushed it to my server as well as submitted the entry on the Ludum Dare page.  Did some last minute checking to make sure nothing broke when I was uploading everything.
+
+<em>8:00 PM</em>
+
+Lean back in my chair and smile.
+
+&nbsp;
+<h3 style="text-align: center;">What Went Right</h3>
+<strong>The framework</strong>.
+
+I had discovered Phaser just last month, and with school didn't have very much time to learn it before the dare.  I had only about 5 hours of experience with it coming into the dare.  I have more extensive experience making my own 2D game model from scratch!  I made a bet that this framework would allow me to accomplish what I wanted, and I think it paid off.
+
+Phaser is really new, so there's no easy way to find out how to do "x".  If you google, "How to do 'x' in Phaser", you usually get links to GitHub source files or the official documentation.  That's fine, but say, if you wanted to make a static background, it may not be easy to find exactly what components to use.  However, when you do realize what components you need to use to accomplish "x", the documentation is excellent.  It's been too long since I've used a framework that so clearly lists parameters and return values, along with brief descriptions of what each function does.  It really made this game possible for me.
+
+<strong></strong><strong>Doing all design immediately at the start.</strong>
+
+Granted I planned way more than I could accomplish practically, but boy, this sure helped.  Whenever I was unsure of what to do next, I looked at my board and had clear direction.  It worked very well for such a small, quick-to-implement project.  I was never unclear of what I wanted the finished game to look like.  I broke off from my original design in a few areas, but they were few and for good reason.
+
+<strong>Sleep schedule</strong>.
+
+I knew I had formulate a sleep plan for the weekend.  Getting no sleep would give me more time,  but would seriously hinder the value of the work I accomplished with that time.  Two full nights of sleep would help me work more efficiently, but would eat up a solid 16 hours of my 48 hours.  I settled on 5 hours for each night, and I think it paid off.  I didn't feel tired at all while working, and I believe I was very effective with the extra six hours I gained from limiting my sleep.
+
+<strong>The art style</strong>.
+
+I've never really done art in a game outside of static images or generic geometry.  I wasn't sure if the construction-paper look would pay off.  I was afraid it would just look like a crappy version of South Park.  I'm pretty happy with how it came out, though, even if it looks a little more childish than I was planning.  Plus, choosing such a simple style from the start complimented my art skills (or lack thereof) and decreased the total time I spent on art.
+
+<strong>The knowledge I gained</strong>.
+
+I've never really gotten this far with a game project before.  I guess that's the magic of participating in Ludum Dare.  Even though I didn't get everything I wanted done, I gained so much knowledge for next time.  For example, I came into this thinking I was going to make levels by hand in a text file, individually writing out the ID's of blocks.  Yeah, that didn't go over so well.  It took me ten minutes to learn that Phaser had awesome support for standardized json files created by a program named <em>Tiled</em>.  It was so nice to use a GUI to design my levels.  I will aim to use this style in the future.
+<h3 style="text-align: center;">What Went Wrong</h3>
+<strong>Enemy pathfinding</strong>.
+
+I spent just under <em>six hours</em> trying to get a working pathfinding algorithm down for my enemies.  I started from scratch, and I have no experience with side-scrolling platform path finding.  It didn't even occur to me that I could have just Googled it and found any number of tutorials or psuedocode out there on this subject.  As a result, I spent over 20% of my working hours on an algorithm that doesn't even work that well.  It has flaws that often cause enemies to fling around the map.  I could have saved much of this time, and had a much better final project, by just following a tutorial.
+
+<b>Trying to make a story-driven game</b>.
+
+I grossly underestimated how long it would take to make even really simple screens for storytelling purposes.  Of all the art I made for the game,  I would have had to double or triple it to complete all the ideas I had for the story.  I may revisit the game and implement these in the future, because I really feel the game is lacking without it.  In the end, I was just barely able to make a splash screen for my logo.  The title of the game is listed nowhere in the game, either.  It doesn't bring off the feeling of polish like I was hoping.
+
+Next time, I will either decide to make a very simple story, told without words, or I will make a more arcade-style game that has always been successful in previous Ludum Dares.
+
+<strong></strong><strong>Changing from only one lantern to multiple lanterns.</strong>
+
+Late Saturday night, I had the epiphany to allow the maps to support more than one lantern.  The code I had written did not support this in the slightest.  Before I changed it, the user actually had a direct reference to one and exactly one lantern.  I lost about an hour (could have been more) changing this to support a list of lanterns instead.
+
+Either I should have supported many from the beginning, or never bothered with supporting more than one.  Currently, only one level even uses multiple lanterns.  Instead, I could have used that hour to create an extra level or two with only one lantern.
+
+<strong></strong><strong>Level design.</strong>
+
+I've never quite had the opportunity to design actual levels before.  I've never actually made it far enough in any of my projects.  I totally underestimated how long it was going to take to design the levels as a result of my inexperience.  I gave myself about two hours to design levels, which only allowed me to create three levels.  The third of which is darn near impossible, partly because of the bad enemy pathfinding, and partly because I never had a chance to fully test all aspects of it and make sure it was doable.
+
+My level design in general is just terrible.  This is the kind of game that would do well from a large collection short, sweet puzzles.  Instead, I created three massive levels.  If the player dies at any point during them, they have to restart all again.  I could have easily made a larger variety of levels by splitting these levels up into short bits.
+
+I also tried to do all these levels one after another.  As a result, they're largely uninspired.  I should have been designing them throughout, especially considering the level parsing and rendering was working by the middle of Saturday.  I was struggling to finish designing level 3 when in reality, the level design should be the funnest part of the whole process.
+
+&nbsp;
+<h3 style="text-align: center;">Conclusion</h3>
+For my first Ludum Dare, I think I was wildly successful.  I had a blast, really proved to myself I <em>can </em>finish something I start, and managed to learn so much in the process.  I've really advanced as a game developer, and I can finally say, "I've made a game.  Do you want to play it?"  Unfortunately, I don't think my game will go very far in the Compo.  Still, I am already looking forward to the next Ludum Dare and I can't wait to play some other game submitted in the current one.
+
+&nbsp;
+
+Cudabear
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;
+
+&nbsp;

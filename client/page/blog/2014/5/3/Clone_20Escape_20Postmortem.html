@@ -1,0 +1,98 @@
+<p style="text-align: center;"><a href="http://www.cudascubby.com/blog/wp-content/uploads/2014/06/25773-shot0.png"><img class=" wp-image-155 aligncenter" alt="Avoiding enemies and making my way to the escape" src="http://www.cudascubby.com/blog/wp-content/uploads/2014/06/25773-shot0.png" width="768" height="588" /></a></p>
+So, Ludum Dare 29 has been over for over a month.  The results have long since come back.  <em>Clone Escape</em> far exceeded my expectations, though my process suffered in some areas.  I know I'm really late on writing this, but I just couldn't find both the time and motivation.  Even so, here it is.  Let me start off by including some links.
+<p style="text-align: center;">You can play the game <a href="http://www.cudascubby.com/ld29" target="_blank">here</a> and you can find the Ludum Dare page <a href="http://www.ludumdare.com/compo/ludum-dare-29/?action=preview&amp;uid=25773" target="_blank">here</a>.</p>
+
+<h2 style="text-align: center;">Timeline</h2>
+<h3>Friday, April 25th</h3>
+<h5>8:00 PM</h5>
+As with the last Ludum Dare, I was out at the very start of the competition so I was able to check the theme on my phone and then brainstorm while driving home.  I'll admit, Beneath the Surface really stumped me, and that caused some of the problems I had later on.  When I arrived home I had no good ideas yet brewing in my mind.
+
+After a short while and a few rough sketches, I finally had some ideas brewing.  At first I perceived Beneath the Surface to mean something beneath the surface of an individual, like the core of their personality or what they really value.  However, I couldn't think of any way to embody this into a game, so I instead approached it from the perspective of a physical location.  I came up with idea of a man trying to escape from beneath the surface of the Earth, fighting mimics of himself the whole way.  I figured it had some symbolism, but the symbolism never really found its place into the final product.
+<h5>12:00 AM</h5>
+I've never been one for art, so I like to get it knocked out right away.  This time around it was much easier to produce art, because I knew exactly what format my sprites and tiles had to be in to work correctly with Phaser.  Using Pickle Editor really helped make things smoother, but I was disappointed with the lack of features it had for gradients and transparency.  It's a raw pixel art editor at its very best, but it got the job done.  I also created some generic metal blocks, hoping they would make some interesting aesthetic and sort of make the place look like a facility or prison of some kind.
+
+I saved a lot of time making art because I made the enemies a recolor of the existing hero sprite.  Then, when I had the enemies, hero, and tiles done, I got to work on the base game engine.  At this point I knew I wanted the player to shoot fireballs from their hand, but I wasn't sure how it would look in the actual game.  To make this look better, I made the arm of the player a separate entity that rotated freely with the mouse.  It looks really good, and saved time on animating the arm.
+<h5>2:00 AM</h5>
+<div id="" style="width: 551" class="wp-caption aligncenter"><img class=" " alt="initial gif" src="http://www.ludumdare.com/compo/wp-content/uploads/2014/04/gif11.gif" width="551" height="381" /><p> The first GIF I took of the game after about four hours of development.</p></div>
+
+At this point I went to bed for the first night.  I had Implemented the basics of the engine as well as the arm rotation and shooting.  I made many technical decisions about the implementation of the game during this period, such as not allowing the levels to scroll.  Some of these decisions paid off and a few came to bite me in the behind later.  Overall, however, the base implementation of the game worked pretty well and no major changes had to be made at any later point.
+
+&nbsp;
+<h3>Saturday, April 25th</h3>
+<h5>8:00 AM</h5>
+I slept a solid 6 hours.  I meant to sleep 4, but didn't actually set my alarm.  Thankfully, I didn't need the two hours that I lost and the extra sleep made the day a lot more productive than the previous Ludum Dare.  I started off by immediately getting to work on the AI algorithm for the enemies.  I learned from the previous Ludum Dare that it can be tricky to perfect this algorithm, and I decided to start from the ground up with a basic state-driven system.  Basically, the enemies have 3 states:
+<ol>
+	<li>Idle</li>
+	<li>Pacing</li>
+	<li>Alerted</li>
+</ol>
+The enemies are defaulted to the pacing state.  A random counter will eventually trigger them to enter the idle state, which lasts for a random but predictable amount of time.  All the while, they are scanning for the player.  If the player is close enough, an admittedly primitive algorithm detects of the enemy can see the player.  If this is true, the enemy enters the alert state, which starts a countdown timer before the enemy fires.  If the enemy can no longer see the player, they renter the pacing state.
+
+I figured, since I was making a stealth platformer, enemy predictability was important to make the game not to difficult.  But I also didn't want the enemies to be too easy, so that made for the random idle stops.  Follow too close?  You're going to get shot.  The AI is relatively primordial in nature, but it looks great.
+
+<div id="" style="width: 510" class="wp-caption aligncenter"><img alt="" src="http://www.ludumdare.com/compo/wp-content/uploads/2014/04/gif21.gif" width="510" height="379" /><p> Working AI. Notice how the enemy enters the alert state when it sees the player. At this point, the enemy could not yet shoot and the player bullets didn't collide with the enemy.</p></div>
+<h5>12:00 PM</h5>
+At this point, the AI was solid.  I had a preexisting obligation to attend, so I was unfortunately unable to get any more work done during this time.
+<h5>3:00 PM</h5>
+When I returned to my desk, I got to work on bullet collision.  This was fairly rudimentary, but required some basic collision detection on my part because Phaser's physics don't play to well when you are trying to do nothing more than detect a collision.   When this was done, I threw a few more enemies on screen and realized I had a playable game.  It felt amazing to know the core mechanics of the game were complete so quickly into the competition.  I still had over 24 hours to go!
+
+I knew, however, there was still plenty of work to be done.  I got to start right away on level design, the other really annoying part that I had trouble with in the previous dare.  I said goodbye to my test level and implemented my level loading and switching system, straight from <em>The Lonely One</em>.  I used a secondary layer on my tilemap to indicate where I wanted the player and enemies to spawn, so I could paint them on rather than place them individually.  Then, I made my first level.
+
+It was now that I realized my game was far too easy.  At first I was going to let the player shoot as much as they wanted, but that would just result in them spamming their way through the game.  I found this fun, however, so I made sure to use this mechanic for at least one level.  For the rest of the game, though, a different mechanic would have to be devised.  I came up with the idea for a cooldown, that starts long and shortens the further you get into the game.  This means the player gets stronger as they get closer to the surface, right?
+
+<div id="" style="width: 330" class="wp-caption aligncenter"><img alt="" src="http://www.ludumdare.com/compo/wp-content/uploads/2014/04/gif31.gif" width="330" height="273" /><p> Recharging bullets and floating bridges.</p></div>
+
+Almost.  I was on the right track for sure, but this still meant the player could hide forever and wait for their bullets to recharge.  Then I realized: I could limit their ammo each level.  This would introduce a puzzle aspect into the game as well.  When is it most effective to use the ammunition?  I implemented it right away.
+<h5>7:00 PM</h5>
+Most of the rest of the night was used for level design.  I got about 6 levels completely designed and tested at this point.  I have to admit I <em>grossly </em> hate level design.  It was tedious to place each block, and I was overall uninspired to do much with the design of the levels.  Even so, I tried to incorporate as much variety as possible into each level, using different paths.  The levels at the end became very linear, but I managed to incorporate several stealth aspects into them as well as areas where it would be effective to use bullets to progress.
+
+I also used <em><a href="http://www.abundant-music.com/" target="_blank">Abundant-Music</a> </em>and <a href="http://www.bfxr.net/" target="_blank"><i>Bfxr</i></a> to generate sounds for my game at this point.  I absolutely love these tools.  Being entirely unskilled in audio, they really helped me to bring my game together.   Finally, I added my splash screen from the previous game as well as some background to act as a loading buffer while the game's resources loaded in.  I decided at this point to name the game <em>Clone Escape</em>, simply because I could think of nothing better.
+<h5>12:00 AM</h5>
+I went to bed early, as the game was entirely playable at this point.  It was short, but I could submit it no problem!  This was an awesome feeling.  Still, I knew there was plenty more to do and vowed to get an early start the next day.
+<h3></h3>
+<h3>Sunday, April 27th</h3>
+<h3>9:00 AM</h3>
+So my idea to get an early start didn't necessarily work.  I slept in quite late, but again, thankfully I didn't need the time.  I had worked hard and gotten my game in playable shape <em>before</em> the last day, so I could afford some extra sleep.
+
+I started the day by adding some polish.  I added sound effects for death and enemy alert.  I also designed a quick death animation for the player and the enemies, whereas before the enemies had just been vanishing when they got hit with a bullet.  I cleaned up how the player's arm works a little as well, to make it look a little more natural.
+
+It was at this point I felt the game was missing a little bit of a sneaky aspect to it.  The only way to avoid enemies seeing you was to jump above them or fall below them, which wasn't always available.  I decided to add a crouching animation that makes the player much harder for the enemy to see, though the enemy can and still will find the player if they get close enough.  This introduced an interesting mechanic to the game, allowing the player to make riskier moves.  I was happy with how it worked out.
+
+<div id="" style="width: 376" class="wp-caption aligncenter"><img alt="" src="http://www.ludumdare.com/compo/wp-content/uploads/2014/04/gif4.gif" width="376" height="233" /><p> Crouching and hiding, as well as death animations and limited ammo. the double-death was unintentional and awesome.</p></div>
+
+At this point I knew I wanted to add a final challenge to the game, some kind of boss battle.  I wasn't sure what would make a fun boss that fit in with the theme of the game, so I decided to draw back on when I wasn't limiting the player's ammo and make a level where the player could unleash all Hell on the unsuspecting enemies.  Yeah, wreck havoc on that facility!  I decided, too, to give the player a choice of ending, based on if they destroy the final level or not.
+
+This required implementing a "clone teleporter" which I never actually programmed behavior too, but it acted nicely as something to blow up.  As for the clones, I stuffed as many of them into the room as I couldn't.  It was great to see the AI and supporting code I had written supported so many clones and action without slowdown.
+
+After the final boss battle was implemented, it was just a matter of implementing a few more levels.  I rounded out the number at 10 including the boss level, and that seemed to work perfectly because the game took 15-30 minutes to beat depending on good the player was.
+<h5>6:00 PM</h5>
+To be honest, I was feeling pretty burnt out at this point.  I had 9 complete levels, a boss fight, solid mechanics, sound, and background.  I wasn't sure exactly what else to add with the exception of more levels, which I thought would make the game too long for a Ludum Dare game.  I decided to let the game go and submit it at this point, rather than try to do anything else with only two hours remaining.
+
+&nbsp;
+<h2 style="text-align: center;">What Went Right</h2>
+<ul>
+	<li><strong>My Toolset:</strong>  Last Ludum Dare, I mentioned how useful Phaser was in creating my game.  This time around was no exception.  I had way more knowledge about how the engine works, and it was even easier to create my game.  Whereas last time I was wasting time learning about how to do things, this time I was just able to do them.  It was a huge time saver and really allowed me to make this web game successful.</li>
+	<li><strong>Timelapse:</strong> It's awesome to see my progress through the weekend on the <a href="https://www.youtube.com/watch?v=I0seMPcS7FM" target="_blank">timelapse video I created</a>.  Last time around I tried to stream, but unfortunately my internet connection just isn't strong enough for it.  So this was an excellent alternative.</li>
+	<li><b>Enemy AI:</b> The enemy AI was so much easier to implement than last time.  By using a state-driven system, I was able to make an efficient and effective algorithm that was much easier to add to as I went along.  Last time, my AI was sloppy and caused enemies to jump all over the screen.  The solid AI really brings this game together.</li>
+	<li><b>Posting Updates to Ludum Dare</b>: This time around, I decided to post several updates to the Ludum Dare website during development.  I used Gifcam to make a quick gif of my progress and posted it.  It only took a few minutes, and I'm not sure many people saw my updates, but it certainly gave me an excuse to have a quick break and reassured me that I was making awesome progress.</li>
+	<li><strong>Sticking to what I know</strong>: I'll be honest, at first I was apprehensive to create another platformer.  After all, the one I made last time didn't do so well.  However, creating another platformer allowed me to learn from what I did wrong last time and really come out ahead this time.  I was able to make a platformer with tighter controls, better enemy AI, and a solid shooting system.  Even though it was my first time making a stealth-type game, it worked out well.</li>
+	<li><strong>Using JQUERY and DOM elements for menus:</strong>  I'll be truthful.  Phaser (and canvas in general) doesn't have much for including text, menu buttons, and the like.  Last time, I did a really hacky approach with two Phaser canvases driving the splash screen, and it just didn't work out.  This time, I stood back and thought, "I'm just making a website with a game embedded.  Why not use JQuery?"  And Use JQuery I did.  The entire splash screen and menu is all made from DOM elements with simple JQuery animations hiding the canvas until all the resources are loaded.  It looks so great, and is so much easier to maintain.</li>
+</ul>
+&nbsp;
+<h2 style="text-align: center;">What Went Wrong</h2>
+<ul>
+	<li><strong>Not planning enough: </strong>Even though <em>Clone Escape</em> performed better in the ratings than <em>The Lonely One</em>, it was not nearly as well planned out.  I basically jumped into this game blind, knowing I wanted to make something about an underground platformer.  Most of the mechanics, art design, and background for the game came as I went.  I feel that if I would have planned as well as I did last time, I would have an even more solid game.</li>
+	<li><strong>Not Promoting the game enough:</strong>  Unfortunately, after I submitted my game, I didn't do much to promote it.  I went in and rated the twenty games required to qualify, of course, but I never got my game out into the public for more people to play.  In the end I had a nice collection of kind comments, but I feel I could have gotten more feedback had I really tried to promote my game during those two weeks.</li>
+	<li><strong>Duplicate code:</strong>  In the end, the enemies of my game basically became players that were driven by their AI.  All other code between them and the player was shared and duplicate, even down to how the arm moves to angle toward a target.  I could have saved a lot of time by realizing this sooner, and I had a hunch this would be the case, so I had no excuse.  The enemies should be an extension of the existing player class, with an extra update function being called to drive the AI.</li>
+</ul>
+<h2 style="text-align: center;"></h2>
+<h2 style="text-align: center;">Conclusion</h2>
+Overall, this Ludum Dare was much more successful than the previous one.  This is very clear even from just the ratings of the game, which I'm very proud of:
+
+<a href="http://www.cudascubby.com/blog/wp-content/uploads/2014/06/ratings.png"><img class="aligncenter size-full wp-image-156" alt="ratings" src="http://www.cudascubby.com/blog/wp-content/uploads/2014/06/ratings.png" width="203" height="267" /></a>
+
+&nbsp;
+
+The Fun rating is especially reassuring, as it's always good to know people had a good time playing my game.  What other reason is there to play a game?
+
+Based on how this game did, I hope to expand it more.  I want to make it about 30 levels long, and I have ideas for new mechanics to fill those levels so it doesn't get boring.  Hopefully, I will be able to do some work on it soon so I can have the new version out within a few months.

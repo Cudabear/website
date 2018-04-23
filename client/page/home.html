@@ -1,33 +1,44 @@
-<div id="introduction-block">
-    <h1 id="site-welcome" class="transparent-title center-text"> Welcome to my Domain </h1>
+<h1 id="site-welcome" class="transparent-title center-text"> Welcome to my Domain </h1>
+<div id="introduction-block"></div>
+
+<p>
+    This is Cuda's Cubby, a website dedicated to the hopes and dreams of one individual aspiring to change the world.  Take a few minutes to look around and I assure you you'll only be slightly disappointed.
+</p>
+<div id="social-links" class="center">
+    <div class="social-link"><a href="https://www.facebook.com/cudascubby/"><img title="Facebook, don't post here much, but blogs are crossposted." src="res/img/fb.png"></a></div>
+    <div class="social-link"><a href="https://github.com/cudabear"><img title="Github, for code goodies" src="res/img/gh.png"></a></div>
+    <div class="social-link"><a href="https://www.linkedin.com/in/ryan-graef-78048b82"><img title="Linkedin, for boring irl stuff." src="res/img/ln.png"></a></div>
+    <div class="social-link"><a href="https://twitter.com/cudascubby"><img title="Twitter, for random thoughts." src="res/img/tw.png"></a></div>
+    <div class="social-link"><a href="https://www.youtube.com/channel/UCs_HtIQMU7vyRX6IGVfxmEA"><img title="Youtube, primarily for dev timelapses." src="res/img/yt.png"></a></div>
+    <div class="social-link"><a href="https://www.fanfiction.net/~cudabear"><img title="Fanfiction, where this all started." src="res/img/ff.png"></a></div>
+    <div class="social-link"><a href="mailto:cudascubby@gmail.com"><img title="Gmail, speaking officially." src="res/img/gm.png"></a></div>
+    <div class="social-link"><a href="http://ludumdare.com/compo/author/cudabear/"><img title="Ludum Dare, where I go to drink coffee and create games." src="res/img/ld2.png"></a></div>
+    <div class="social-link"><a href="https://www.reddit.com/user/cudabear"><img title="Reddit, for regular discussion." src="res/img/rd.png"></a></div>
+    <div class="social-link"><a href="http://nanowrimo.org/participants/cudabear"><img title="NaNoWriMo, for no shave november." src="res/img/nw.png"></a></div>
 </div>
-
-<p>
-    This is Cuda's Cubby, a website dedicated to the hopes and dreams of one individual aspiring to change the world through the various mediums of storytelling.  Take a few minutes to look around and I assure you you'll only be slightly disappointed.
-</p>
-<p>
-    If you're looking for contact information, please look under the <a href="javascript:void 0;" onclick="Utils.loadPage('about')">about tab</a>.
-</p>
 <br>
 <br>
 
-<h1 class="title center-text">What's new?</h1>
+<!-- <h1 class="title center-text">What's new?</h1>
 <div id="right">
     <div id="news-blog-block" class="center">
         <div id="blog-loading-gif" class="center-text">
             <img id="loading-gif" src="res/img/load.gif" class="center">
         </div>
+
+
+
         <div id="news-blog" style="display: none;">
-            
+           maybe install actual news post flag in the future? 
         </div>
-    </div>
-</div>
+    </div> 
+</div> -->
 
 <script type="text/javascript">
-    $('#news-blog').load("controller/getNewsPost", function(){
-        $('#blog-loading-gif').fadeOut(500, function(){
-            $('#blog-loading-gif').remove();
-            $('#news-blog').fadeIn();
-        });
-    });
+    // $('#news-blog').load("controller/getNewsPost", function(){
+    //     $('#blog-loading-gif').fadeOut(500, function(){
+    //         $('#blog-loading-gif').remove();
+    //         $('#news-blog').fadeIn();
+    //     });
+    // });
 </script>

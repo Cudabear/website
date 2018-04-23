@@ -11,12 +11,10 @@
 
 <script type="text/javascript">
     var hash = window.location.hash;
-    console.log(hash);
-    var blogLoc = hash.replace('#blog-post-', '');
-    console.log(blogLoc);
+    var blogLoc = hash.replace('#blog-post?date=', '');
 
     if(typeof page != "undefined"){
-        $('#link-back').attr('onclick', "Utils.loadPage('blog-page-'+page)").html("...Back to blog list.");
+        $('#link-back').attr('onclick', "Utils.loadPage('blog-page-'+(page+1))").html("...Back to blog list.");
     }
 
     $('#blog-blocker').load('controller/getPost?loc='+blogLoc, function(){

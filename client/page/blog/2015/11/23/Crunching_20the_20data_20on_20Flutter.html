@@ -1,0 +1,76 @@
+Hi, all!
+
+For Ludum Dare 34, my wife and I built <em><a href="http://www.cudascubby.com/ld34">Flutter</a>, </em>an experimental puzzle-platformer that used the themes of <i>Two Button Controls</i> and <em>Growing</em>.  Be sure to check it out, if you haven't already!
+
+<div id="attachment_224" style="width: 423" class="wp-caption alignright"><a href="/res/blog-img/2015/12/flutter.png"><img class=" wp-image-224" src="/res/blog-img/2015/12/flutter.png" alt="Click here to play (and rate, if you're participating in the jam as well)" width="423" height="235" /></a><p> <a href="http://ludumdare.com/compo/ludum-dare-34/?action=preview&amp;uid=25773">Click here to play (and rate, if you're participating in the jam as well)</a></p></div>
+
+&nbsp;
+
+This time around, I added an additional feature to my workbench: the ability to log Google events.  My goal was to use the information I collected from this functionality to better improve both Flutter and games I create in the future.  Now that I've received (mostly) all the ratings I will for the date, I figured it was a good time to crunch that data and make some conclusions.
+
+&nbsp;
+
+<!--more-->
+
+So, how did I log events?  Google event tracking allows you to log events with a <em>category</em>, an <em>action</em>, and a <em>label.  </em>For category, I used the key "Flutter v1.0.0", with the idea of being able to track events for future versions separately.  For actions, I decided to log the following player interactions:
+<ul>
+	<li><strong>restart-level</strong>: When the player restarts the level by pressing "R".  The label for this is the level that the reset occurred on.  Unfortunately, a bug in the logic of the game resulted in this event getting logged every time the player died as well as when they pressed R, so it wasn't that useful.</li>
+	<li><strong>beat-level</strong>: When the player beats a level by reaching the end goal.  The label is the level that was beat.</li>
+	<li><strong>die-to-thorns:</strong> When the player collides with a thorn tile and dies.  The label is the level that the death occurred on.</li>
+	<li><strong>die-to-bees</strong>: When the player collides with a bee entity and dies.  The label is the level that the death occurred on.</li>
+	<li><b>beat-game</b>: When a player reaches the credit roll of the game.  The label details the number of retries it took them to reach the end.</li>
+	<li><b>dirty-cheater:</b> When a player triggers the cheat to unlock all the levels.  The label is unused in this case.</li>
+</ul>
+Using these event actions we can answer several very important questions.
+<h2 style="text-align: center;">What percentage of people beat the game?</h2>
+The easiest question to answer is just that: how many people finished the game, of those who committed to beating at least one level?  For this, we can use the beat-game and beat-level actions.
+
+Firstly, inspecting the "beat-level" action shows us that there are 42 unique instances of this event, meaning <strong>42 people completed at least one level</strong>.  That makes sense, because I received 37 total reviews and the descrepancy of 5 might be people who played but never reviewed, or friends of mine that play tested the game for me.
+
+Next, inspecting the "beat-game" action shows that there are 4 unique occurrences, meaning 4 people reached the end credits.  To reach the end credits, you must either complete all the levels, or activate the cheat to unlock it.  There are 3 unique instances of the "dirty-cheater" action, so I can only assume 3 of these people cheated to see the ending.  This aligns with the idea that my wife, my friend, and I all playtested the game by cheating.  With this in mind, <strong>no more than 1 person completed the game without cheating</strong>.
+
+That means that <strong>only 0.02% of players completed the game</strong>, when you discount the 5 random people who played but never beat a level.  It's a little disheartening to see that only one person who reviewed my game made it all the way to see the credit state that I worked hard to include for closure.  This begs the question, why aren't people completing my game?
+<h2 style="text-align: center;">Where are people leaving the game?</h2>
+So, nearly all of the people who played my game didn't make it to the end.  Now, the nature of <em>Flutter</em> is that it's a puzzle platformer, a genre that requires the player to really dig in and think through the puzzle to get to the next one.  That means each level is a unique puzzle that players need to complete.  This is useful because we can see what puzzles are stumping players enough that they give up on the game entirely, by using the "beat-level" label.
+
+<div id="attachment_230" style="width: 627" class="wp-caption aligncenter"><a href="/res/blog-img/2015/12/Capture1.png"><img class="size-full wp-image-230" src="/res/blog-img/2015/12/Capture1.png" alt="The beat-level event log (click to enlarge)" width="627" height="585" /></a><p> The beat-level event log (click to enlarge)</p></div>
+
+By looking at the number of times an event was logged, we can see how many times that level was beaten.  This data, however, isn't perfect because people may have revisited a level they already beat to rebeat it, logging another beat-level for that level.  Similarly, the data is further dirtied by the playtesting that was completed by me and my friends before launching the game.
+
+As the number of events decreases the further from the start of the game we go, we can see how many individuals stopped playing on a particular level.  There's no way to guarantee they even tried the last level they unlocked, but if we do assume they did, we can look for problems in the level that might prevent people from continuing.
+
+<div id="attachment_231" style="width: 450" class="wp-caption aligncenter"><a href="/res/blog-img/2015/12/ChartGo.png"><img class="size-full wp-image-231" src="/res/blog-img/2015/12/ChartGo.png" alt="Graph showing number of people stumped by level" width="450" height="400" /></a><p> Graph showing number of people stumped by level</p></div>
+
+The graph makes it easy to see <strong>the problem levels: 5, 6, 9, and 11</strong>.  It would be nice if we could just stop here and say, "Well, the level design on these levels must suck, and I need to make it better."  We can dig deeper and ask, what about these levels was making people leave the game?
+<h2 style="text-align: center;">Why are some levels scaring people away?</h2>
+Level 5 is "Avoid", the first level with a bee enemy.  At this point, all the player knows is they can use the trampoline plant to jump.  The goal is to teach the player to avoid the bees by jumping over with the plant.  So, why did 6 players leave on this level?  To explore this, let's break down the number of times players died to the bee hazard of the game on each level.
+<p style="text-align: center;"><strong>Bee Deaths</strong></p>
+
+
+<div id="attachment_233" style="width: 822" class="wp-caption aligncenter"><a href="/res/blog-img/2015/12/Capture2.png"><img class="size-full wp-image-233" src="/res/blog-img/2015/12/Capture2.png" alt="The number of times players died to the bee hazard." width="822" height="341" /></a><p> The number of times players died to the bee hazard. (click to enlarge)</p></div>
+
+If we look at the level "Avoid", we see that 24 unique players died to these bees at least once.  That's over 50% of our entire player base!  The more interesting fact, however, is that for those who died to the bees, they died a total of 58 times, meaning <b>the average player who died to the bee hazard died 2.4 times.</b>  This indicates there's something wrong with this obstacle, either the player gets it right the first time or they struggle.  The 6 players who left were likely of those who struggled.
+
+Similarily, we can look at level 3 of the game, "Jump".  In this level, the player is tasked with using the trampoline plant to jump over a small thorn tile hazard.  Let's break down the number of times a player died to the thorn hazards of the game to see how people did with this mechanic.
+<p style="text-align: center;"><strong>Thorns</strong></p>
+
+
+<div id="attachment_232" style="width: 827" class="wp-caption aligncenter"><a href="/res/blog-img/2015/12/Capture11.png"><img class="size-full wp-image-232" src="/res/blog-img/2015/12/Capture11.png" alt="The number of times players died to the thorn tile hazard." width="827" height="270" /></a><p> The number of times players died to the thorn tile hazard. (click to enlarge)</p></div>
+
+On the level, "Jump", we see a similar trend with the thorns as we did with the bees on "Avoid", except in this case nearly every player died to the thorns at least once.  <strong>Of those who did die to the thorns, they died an average of 2.6 times.</strong>  Only 3 players didn't complete "Jump", but the trend is reflected in "Avoid".  In general, these hazards aren't supposed to be dealt with by jumping over them.  Based on thisand the data, it seems that <strong>the "Jump" and "Avoid" levels were poor ways of teaching players about the thorn and bee hazards of the game</strong>.
+
+Now, what about levels 6, 9, and 11?  These levels collectively trumped 24 players, well over half the player base.  Level 6 is "Eat", a level designed to teach the player about the bee-eating plant that can be used to remove bees from a level.
+
+<div id="attachment_236" style="width: 300" class="wp-caption alignleft"><a href="/res/blog-img/2015/12/Capture3.png"><img class="size-medium wp-image-236" src="/res/blog-img/2015/12/Capture3-300x198.png" alt="Level 3, &quot;Eat&quot;" width="300" height="198" /></a><p> Level 3, "Eat"</p></div>
+
+Interestingly, of the 29 players who made it to this level, 15 died to the bees at least once, with an average rate of only 1.4 times.  This seems like an improvement over "Avoid", so why did it kill more individuals?  This is a case where the data doesn't tell everything, and additional investigation needs to be done to tell why this level is defeating so many players.  I've had friends tell me the eating bees mechanic isn't shown well, and also theorized that, since Ludum Dare raters are fickle players who are looking to gather the minimum amount of information about a game to put in a reasonable rating, this level just happens to be where most decided they had reached that point.  As a general conclusion, <strong>"Eat"</strong> <strong>could use some refactoring to see how to get players to react better to it</strong>.
+
+Now, finally for levels 9 and 11.  These two levels are (admittedly) the two hardest levels of the game.  From what I've heard from those who playtested <em>Flutter</em>, it took them eight to ten minutes of digging in to really figure it out and get passed them, so with the idea of a target audience of Ludum Dare players in mind, <strong>Level 9 and 11 might have been a little too difficult</strong>.  Particularly when just about every player who tried these levels died at least once to either the thorns or the bees and had to restart it.  It is interesting that Level 9, "Doors", has bees at the very end of the level.  Of the 7 people who died to these bees, they only averaged 1.5 deaths, lower than other levels.  It's likely these<strong> players reached the end of the level, died to the bees,</strong> <strong>and didn't want to try again</strong>.
+<h2 style="text-align: center;">Conclusions</h2>
+Adding this behavior-tracking ability to my game is one of the greatest decisions I've ever made.  While Ludum Dare reviews are extremely helpful, nothing is more telling about the problems of a game than the actual behavior of the people playing it.  I was able to make several helpful conclusions about the game's mechanics involving jumping and hazards, as well as the level design that will I can seek to resolve in future iterations of the game.
+
+It's a shame that the restart-level action became muddied with die-to-bees and die-to-thorns events that also logged a restart-level action, because it would have been very interesting to see what levels were making people restart them the most.  This could have been used to investigate why levels such as "Eat", and the difficult levels 9 and 11, were scaring off so many players.
+
+Thanks for reading.  I've certainly learned a lot by analyzing this data and will use it to make my future Ludum Dare entries even better.  I hope you've learned something, too!
+
+~Cudabear

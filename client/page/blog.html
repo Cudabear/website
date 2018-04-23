@@ -10,63 +10,65 @@
                 
             
         </div>
-        <h1 id="no-posts-warning" class="title text-center" style="">Sorry, the blog is currently broken.  Moving away from wordpress has proven harder than first thought.  Hopefully Cudabear can have this fixed soon.</h1>
+        <h1 id="no-posts-warning" class="title text-center" style="">Sorry, the blog is currently broken. Hopefully Cudabear can have this fixed soon.</h1>
         <a id="next-page-link" href="javascript:void 0;" onclick="" class="float-right" style="display: none;">Let's progress forward, to the next page...</a>
         <a id="previous-page-link" href="javascript:void 0;" onclick="" class="float-left" style="display: none;">...I'm scared, let's go back a page</a>
     </div>
 </div>
 <script type="text/javascript">
-    // var hash = window.location.hash;
-    // var hashSplit = hash.split('-');
-    // var page = 1;
-    // if(hashSplit.length > 2){
-    //     page = parseInt(hash.split('-')[2]);
-    // }
+    var hash = window.location.hash;
+    var hashSplit = hash.split('-');
+    var page = 0;
+    var perPage = 10;
+    if(hashSplit.length > 2){
+        page = parseInt(hash.split('-')[2]) - 1;
+    }
 
-    // var pageComments = [
-    //     "Messing with the url hash, are we??",
-    //     "Latest posts on Cuda's Blog",
-    //     "Slightly expired posts on Cuda's Blog",
-    //     "Cobweb-covered posts on Cuda's Blog",
-    //     "Historically distinct posts on Cuda's Blog",
-    //     "Carbon-dated posts on Cuda's Blog"
-    // ];
+    var pageComments = [
+        "Messing with the url hash, are we??",
+        "Latest posts on Cuda's Blog",
+        "Slightly expired posts on Cuda's Blog",
+        "Cobweb-covered posts on Cuda's Blog",
+        "Historically distinct posts on Cuda's Blog",
+        "Carbon-dated posts on Cuda's Blog"
+    ];
 
-    // var titlePhrase = pageComments[pageComments.length-1];
-    // if(page < pageComments.length){
-    //     titlePhrase = pageComments[page];
-    // }
-    // $('#title-phrase').html(titlePhrase);
+    var titlePhrase = pageComments[pageComments.length-1];
+    if(page < pageComments.length){
+        titlePhrase = pageComments[page];
+    }
+    $('#title-phrase').html(titlePhrase);
 
-    // $("#next-page-link").attr('onclick', 'Utils.loadPage("blog-page-'+(page+1)+'")');
-    // $("#previous-page-link").attr('onclick', 'Utils.loadPage("blog-page-'+(page-1)+'")');
+    $("#next-page-link").attr('onclick', 'Utils.loadPage("blog-page-'+(page+2)+'")');
+    $("#previous-page-link").attr('onclick', 'Utils.loadPage("blog-page-'+(page-1)+'")');
 
-    // $('#blog-posts').load("controller/getPosts.html?page="+page, function(){
-    //     $('#blog-loading-gif').fadeOut(500, function(){
-    //         $('#blog-loading-gif').remove();
-    //         $('#blog-post-wrap').fadeIn();
-    //     });
+    $.get("controller/getPosts", function(posts){
+        $('#blog-loading-gif').fadeOut(500, function(){
+            $('#blog-loading-gif').remove();
+            $('#blog-post-wrap').fadeIn();
+        });
 
-    //     $('.blog-excerpt').each(function(excerpt){
-    //         var id = $(this).attr('name');
+        for(var offset = page*perPage; offset < posts.blogs.length && offset < page*perPage+perPage; offset++){
+            var blog = posts.blogs[offset];
 
-    //         $(this).find('a').attr('href', 'javascript:void 0;').attr('onclick', 'Utils.loadPage("blog-id-'+id+'")');
-    //     }, this);
+            $('#blog-posts').append("<div class='blog-excerpt box-outline'>" +
+                "<h2 class='subtitle center-text'><a href='#blog-post?date=" + blog.linkDate + "'>" + blog.title + "</a></h1>" +
+                "<p class='center-text'>" + blog.date + "</p>" +
+                "<p class='center-text'>" + blog.summary + "</p>" +
+                "</div>"
+            );
+        }
 
-    //     if($('.blog-excerpt').length == 0){
-    //         $('#no-posts-warning').css("display", "block");
-    //         $('#previous-page-link').html("...I'm scared, let's go back to the first page").attr('onclick', 'Utils.loadPage("blog-page-1")');
-    //     }
 
-    //     //lazy detection of if there's another page.  If it's the last page and we have exactly 10 blogs on the page,
-    //     //the user will get a 404 on the next page.  That's bound to be pretty rare, though.  Acceptable bug for now.
-    //     if($('.blog-excerpt').length == 10){
-    //         $('#next-page-link').css("display", "block");
-    //     }
+        //lazy detection of if there's another page.  If it's the last page and we have exactly 10 blogs on the page,
+        //the user will get a 404 on the next page.  That's bound to be pretty rare, though.  Acceptable bug for now.
+        if($('.blog-excerpt').length == 10){
+            $('#next-page-link').css("display", "block");
+        }
 
-    //     if(page != 1){
-    //         $('#previous-page-link').css("display", "block");
-    //     }
-    // });
+        if(page != 0){
+            $('#previous-page-link').css("display", "block");
+        }
+    });
 </script>
 

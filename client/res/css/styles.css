@@ -67,7 +67,8 @@ a:visited {
     text-shadow: -1px -1px 0 #111111, 1px -1px 0 #111111, -1px 1px 0 #111111, 1px 1px 0 #111111;
     border-left: 2px solid #111111;
     font-family: 'Arimo', sans-serif;
-    width: 33.333%;
+    width: 33.33%;
+    float: left;
 }
 
 .header-button:last-child {
@@ -296,10 +297,10 @@ a:visited {
 }
 
 #introduction-block {
-    background-image: url(../img/banner.jpg);
+    background-image: url(../img/banner2.jpeg);
     padding: 10px;
-    min-height: 200px;
-    background-position: 55% 15%;
+    min-height: 270px;
+    background-position: 0% 50%;
     background-size: 100% auto;
     background-repeat: no-repeat;
     background-color: #111111;

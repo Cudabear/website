@@ -8,7 +8,4 @@
 
 node_modules
 client/projects
-
-#temp ignore blog dir
-client/page/blog-posts
-client/res/blog-img
+.DS_Store

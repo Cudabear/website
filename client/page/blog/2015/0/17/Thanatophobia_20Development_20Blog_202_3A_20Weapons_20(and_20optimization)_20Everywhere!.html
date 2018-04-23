@@ -1,0 +1,51 @@
+Hello everyone!
+
+I'm a couple days late, but here's the second development blog for Thanatophobia.  Today we'll be looking at the various weapons systems that will be available to you when you adventure through an abandoned military facility in Thanatophobia.  I've also completed some much-needed optimizations of the lighting engine, but since we went over so much technical stuff last month, I won't touch on that too much.  Basically, the game holds a steady 60 fps on most of my devices, now!
+
+<!--more-->
+
+So, for the weapons.  Basically, the weapons in  Thanatophobia will deal three primary types of damage:  melee, ballistic, and explosion.  Each type of these three weapons will have their own varieties, probably 5+ for any given type.  There will be 8 <em>tiers</em>, or damage classes of these weapons.  This consists of four main types plus one "dysfunctional" or "malfunctioning" type for each class that exists somewhere between the tier before and the tier after.  I feel this will give the player a steadier sense of progression through the game: I want them to be able to upgrade at least one weapon at the end of every mission.
+
+The player will also be able to customize the weapons through a relatively simple crafting system.  Basically, the player can find parts to upgrade their weapons, and these parts can be attached and removed from weapons at will, changing some of the base attributes of those weapons.  I plan to have at least 5 types of these parts per weapon type, and they will also respect 4 tiers of the 8 tiers other weapons follow.  This should offer a large variety of weapons to choose from, at least 120 base weapons, plus the ability to customize them in countless ways!
+
+The soldiers in Thanatophobia will have the ability to use any weapons, rather than them being class-restricted.  For now, I'm planning on each soldier being able to hold two weapons, though I may include a perk that allows a soldier to hold a third weapon.  As the soldier uses a given weapon type, they will level up in proficiency with it, being able to do more damage, attack more efficiently, and be far more accurate.  This will allow the player to define their own soldier classes, providing the ability for millions of combinations.  Do you want a fast class that runs with a shotgun and a sword?  Do you want a tanky, slow class that runs with a rocket launcher and an LMG?  How about a specialist class that has tactical cloak and a sniper rifle?  It's totally up to you.  There will be three main upgrade perk trees for your soldiers, and they will mostly respect those three types.
+
+This is all pretty exciting right?  I thought so!  Here's some gameplay gifs to show the work I've done so far to support this many weapon combinations.  Firstly, melee weapons:
+
+&nbsp;
+
+<div id="attachment_178" style="width: 537" class="wp-caption aligncenter"><a href="/res/blog-img/2015/01/gif7-sword.gif"><img class="size-full wp-image-178" src="/res/blog-img/2015/01/gif7-sword.gif" alt="Slashing with a sword!" width="537" height="378" /></a><p> Slashing with a sword!</p></div>
+
+Melee weapons have a variety of attack ranges and arc sizes, but they're all similar in that they'll hit all enemies within the arc.  Here you can only see one enemy, but if there were multiple you could try to hit more than one for some serious damage!  The tradeoff is that you need to get close to do it.  One planned weapon customization is to <i>re-enforce</i> the weapon, to allow it to push back enemies that are too close!
+
+The next class is explosive weapons, the powerhouse of the arsenal available to players of Thanatophobia.  These hit a large area, dealing massive damage closer to the epicenter of the explosion.  It's also accompanied by a cool effect!  These will have some awesome weapon modifications, one of which is the ability to incorporate liquid nitrogen into the explosion, freezing all enemies caught within the blast.  Just be careful!  Explosions can and will cause friendly fire.  These will be the most powerful of the weapons but will be hard to find ammunition for!
+
+<div id="attachment_174" style="width: 475" class="wp-caption aligncenter"><a href="/res/blog-img/2015/01/gif6-workinggrenade.gif"><img class="size-full wp-image-174" src="/res/blog-img/2015/01/gif6-workinggrenade.gif" alt="Now the grenade works as intended!" width="475" height="385" /></a><p> he grenade works as intended!</p></div>
+
+Bonus gif:  here's a funny glitch that happened when I was trying to get the explosion effect working correctly.
+
+<div id="attachment_176" style="width: 559" class="wp-caption aligncenter"><a href="/res/blog-img/2015/01/gif6-brokengrenade.gif"><img class="size-full wp-image-176" src="/res/blog-img/2015/01/gif6-brokengrenade.gif" alt="That's not how it's supposed to look!" width="559" height="403" /></a><p> That's not how it's supposed to look!</p></div>
+
+The final type of weapons is ballistic weapons.  There was a brief preview of what these looked like in the last development blog, but now they're more polished and all the types are implemented!  Here's a shotgun gif for you, showing variable damage based on range:
+
+<div id="attachment_175" style="width: 450" class="wp-caption aligncenter"><a href="/res/blog-img/2015/01/gif5-shotgun.gif"><img class="wp-image-175" src="/res/blog-img/2015/01/gif5-shotgun.gif" alt="Shotguns are effective at close range, as you'd expect." width="450" height="319" /></a><p> Shotguns are effective at close range, as you'd expect.</p></div>
+
+Ballistic weapons will be the bread-and-butter of the world of Thanatophobia.  There will be several types, all with different effects and different areas of effectiveness.  You will also be able to customize these guns just as much as the other weapons, using the crafting system mentioned earlier.  One of the several ways you'll be able to mod your weapons is by using incendiary rounds.  You can light your targets on fire from range, and watch them burn!
+
+So, as you can see, even though the weapon effects and types are mostly complete, I <em>still</em> haven't made some proper character sprites for the soldiers, yet.  This is on the slate for next month, I promise!  It's kind of hard to start pushing the game without proper art to show it off.
+
+Speaking of proper art, however, I have completed the interface:
+
+&nbsp;
+
+<div id="attachment_180" style="width: 640" class="wp-caption aligncenter"><a href="/res/blog-img/2015/01/interface1.png"><img class="size-large wp-image-180" src="/res/blog-img/2015/01/interface1-1024x576.png" alt="The interface!  Is it too small?" width="640" height="360" /></a><p> The interface! Is it too small?</p></div>
+
+I tried to go for a RTS-style bottom-of-the-window toolbar interface.  My only concern is that I've made it too small, but for now I'm satisfied with it.  This will give you a couple of hints as to what the main gameplay aspects might be like!  I quite like the style of it.  Currently, the "pistol" button is the only one that works.  It merely selects the weapon you want to use and primes you to use it.  The other button that sort of works is the menu button, but that was just a sanity check for me to make sure I'd be able to properly switch states inside the game.
+
+This image is missing a few things I need to add, too.  The box below the "status" is where the character's face will be shown, and each of the "passive" and "active" buttons will have icons to better distinguish them from each other.
+
+And that's about it!  That's everything I've accomplished over the last month.  Did I accomplish everything I wanted to?  Sort of.  I was hoping to get additional work done on the interfaces, but didn't quite get there.  Even so, the focus of this month was the weapons, and they came together!  I'm really happy with how they've turned out.
+
+So, what's next?  The next major step is getting the cutscene system working.  There's some smaller stuff I'll try to get done too, including combat polish and some artwork.  But the main focus will be getting an actively working cutscene system, so I can start to tell the story of what actually happened in the world of Thanatophobia.
+
+See you next month!
